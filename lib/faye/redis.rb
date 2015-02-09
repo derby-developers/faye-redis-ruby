@@ -40,7 +40,14 @@ module Faye
       else
         @redis = EventMachine::Hiredis::Client.new(host, port, auth, db).connect
       end
-      puts "pinging: #{@redis.ping}"
+      @redis.ping.callback do |response|
+        puts "ping response: #{response}"
+      end
+
+      @redis.ping.errback do |reponse|
+        puts "ping errback: #{response}"
+      end
+
       puts "info: #{@redis.info}"
 
       @subscriber = @redis.pubsub
