@@ -40,6 +40,9 @@ module Faye
       else
         @redis = EventMachine::Hiredis::Client.new(host, port, auth, db).connect
       end
+      puts "pinging: #{@redis.ping}"
+      puts "info: #{@redis.info}"
+
       @subscriber = @redis.pubsub
 
       @message_channel = @ns + '/notifications/messages'
