@@ -24,6 +24,7 @@ module Faye
       puts "initting - #{!!@redis}"
       return if @redis
 
+      puts "options: #{@options}"
       uri    = @options[:uri]       || nil
       host   = @options[:host]      || DEFAULT_HOST
       port   = @options[:port]      || DEFAULT_PORT
