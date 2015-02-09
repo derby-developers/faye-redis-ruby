@@ -17,11 +17,11 @@ module Faye
     def initialize(server, options)
       @server  = server
       @options = options
-
       init if EventMachine.reactor_running?
     end
 
     def init
+      puts "initting - #{!!@redis}"
       return if @redis
 
       uri    = @options[:uri]       || nil
@@ -63,6 +63,7 @@ module Faye
     end
 
     def create_client(&callback)
+      puts "creating a client"
       init
       client_id = @server.generate_id
       @redis.zadd(@ns + '/clients', 0, client_id) do |added|
