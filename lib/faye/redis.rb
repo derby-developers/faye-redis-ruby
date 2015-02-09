@@ -44,7 +44,7 @@ module Faye
         puts "ping response: #{response}"
       end
 
-      @redis.ping.errback do |reponse|
+      @redis.ping.errback do |response|
         puts "ping errback: #{response}"
       end
 
