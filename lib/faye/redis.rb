@@ -32,7 +32,7 @@ module Faye
       gc     = @options[:gc]        || DEFAULT_GC
       @ns    = @options[:namespace] || ''
       socket = @options[:socket]    || nil
-
+      puts "before all the logs i was looking for"
       if uri
         @redis = EventMachine::Hiredis.connect(uri)
       elsif socket
